@@ -11,11 +11,21 @@ function App() {
 
   const addValue = () => {
     // counter = counter + 1; 
-    if(counter >= 20){
+    if(counter >= 50){
       alert("Limit exceeds!!");
     }else{
-      console.log(counter + 1);
-      setCounter(counter + 1);
+      // console.log(counter + 1);
+      //when we call a callback function then it will increases the value of counter coz first call back function returns the counter value nd so on...
+      setCounter(counter => counter + 1); 
+      setCounter(counter => counter + 1);
+      setCounter(counter => counter + 1);
+      setCounter(counter => counter + 1);
+
+      //this is not increase the value of counter variable coz useState bundler bundles this values, and increase the value of counter only once
+      // setCounter(counter + 1);
+      // setCounter(counter + 1);
+      // setCounter(counter + 1);
+      // setCounter(counter + 1);
     }
       
   }
