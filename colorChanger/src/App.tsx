@@ -8,7 +8,7 @@ function App() {
 
     <div className="w-full h-screen duration-200" style = {{ backgroundColor: color }}>
       {/* inset-x-0 defines that left and right inset (margin) of an element to 0.  */}
-      <div className=" fixed flex flex-wrap justify-center bottom-16 px-2 inset-x-0 ">
+      <div className=" fixed flex flex-wrap justify-center bottom-16 px-2 inset-x-0">
         <div className=" flex flex-wrap justify-center gap-3 px-3 py-2 shadow-lg bg-slate-500 rounded-3xl">
           <button
             onClick={() => setColor("red")}
