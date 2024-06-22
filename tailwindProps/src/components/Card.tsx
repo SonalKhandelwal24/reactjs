@@ -6,7 +6,6 @@ interface CardProps {
   }
   
 const Card: React.FC<CardProps> = ({username, btnText = "Default Visit"}) => {
-
     // console.log('props :', props);
     // console.log(props.username);
     // console.log(username, btnText);
