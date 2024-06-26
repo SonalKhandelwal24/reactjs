@@ -1,8 +1,14 @@
 import { useLoaderData } from "react-router-dom"
 
+// Define the type for the data
+interface GithubData {
+    followers: number;
+    avatar_url: string;
+}
+
 function Github() {
 
-    const data = useLoaderData();
+    const data = useLoaderData() as GithubData;
     //    const[data, setData] = useState([]);
     //  useEffect(() => {
     //     fetch('https://api.github.com/users/JavaCodeWithSonal')
@@ -26,3 +32,6 @@ export const githubInfoLoader = async () => {
     // const response = await fetch('https://api.github.com/users/hiteshchoudhary')
     return response.json();
 }
+
+
+
