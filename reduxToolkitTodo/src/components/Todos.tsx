@@ -17,6 +17,7 @@ function Todos() {
             key={todo.id}
           >
             <div className='text-white'>{todo.text}</div>
+            
             <button
               onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600  active:bg-white active:text-black rounded text-md"

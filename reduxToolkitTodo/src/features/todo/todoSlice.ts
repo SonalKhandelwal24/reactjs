@@ -4,6 +4,9 @@ const initialState = {
     todos: [
         { id: '1', text: "Learn Redux" },
         { id: '2', text: "Practice Coding" },
+        { id: '3', text: "Java Coding" },
+        { id: '4', text: "Python Coding" },
+        { id: '5', text: "React Programming" },
     ],
 };
 
