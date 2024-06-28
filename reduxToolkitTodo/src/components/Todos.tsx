@@ -1,23 +1,25 @@
 import { useSelector, useDispatch } from 'react-redux'
-import {removeTodo} from '../features/todo/todoSlice'
+import { deleteTodo, removeTodo } from '../features/todo/todoSlice'
 
 function Todos() {
-    const todos = useSelector(state => state.todos)
-    const dispatch = useDispatch()
+
+  const todos = useSelector(state => state.todos)
+  const dispatch = useDispatch()
+
 
   return (
     <>
-    <div className='text-2xl font-bold p-4'>Todos</div>
-    <ul className="list-none">
-        {todos.map((todo) => (
+      <div className='text-2xl font-bold p-4'>Todos</div>
+      <ul className="list-none">
+        {todos.map((todo: any) => (
           <li
             className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
             key={todo.id}
           >
             <div className='text-white'>{todo.text}</div>
             <button
-             onClick={() => dispatch(removeTodo(todo.id))}
-              className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
+              onClick={() => dispatch(removeTodo(todo.id))}
+              className="text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600  active:bg-white active:text-black rounded text-md"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +39,13 @@ function Todos() {
           </li>
         ))}
       </ul>
+
+      <button
+        onClick={() => dispatch(deleteTodo())}
+        className="text-white bg-red-800 border-0 py-2 px-4 my-4 focus:outline-none hover:bg-red-700 active:bg-black rounded text-lg font-semibold"
+      >
+        Remove All
+      </button>
     </>
   )
 }
