@@ -22,8 +22,8 @@ function Home() {
     }
     
     return (
-        <div className="bg-slate-700 font-serif">
-            <h1 className="text-5xl text-center font-bold py-5 mb-2 text-orange-500">User's data</h1>
+        <div className="bg-slate-700 font-serif pb-8">
+            <h1 className="text-5xl text-center font-bold py-8  mb-2 text-orange-500">User's data</h1>
             {loading && <p className="text-center text-white">Loading...</p>}
             {error && <p className="text-center text-red-500">{error}</p>}
             <ul className="grid grid-cols-4 gap-4">
