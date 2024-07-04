@@ -6,7 +6,7 @@ function AddTodo() {
   const [editInput, setEditInput] = useState('');
   const [editId, setEditId] = useState(null);
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state:any) => state.todos);
   const listRef = useRef(null);
 
   
