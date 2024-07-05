@@ -8,7 +8,7 @@ interface Recipe {
 }
 
 function Home() {
-    const [searchValue, setSearchValue] = useState<string>('indian');
+    const [searchValue, setSearchValue] = useState<string>('Indian');
     const [tempDataList, setTempDataList] = useState<Recipe[]>([]);
     const [showValue, setShowValue] = useState<Recipe[]>([]);
     const [serveArray, setServeArray] = useState<string[]>([]);
@@ -39,8 +39,8 @@ function Home() {
         fetchData();
     }, [searchValue]);
 
-    const handleServingChange = (serve:any) => {
-        // const serve = e.target.value;
+    const handleServingChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        const serve = e.target.value;
         if (!serve) {
             setTempDataList(showValue);
         } else {
@@ -49,62 +49,68 @@ function Home() {
         }
     };
 
-    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Optionally, trigger a new search or other actions on form submit
-    };
-
     return (
         <>
-            <form className="max-w-md mx-auto" onSubmit={handleSearchSubmit}>
+        <h1 className='text-center  font-serif  text-white font-bold'>Food Dishes</h1>
+
+            <form className="max-w-md mx-auto my-8">
                 <div className="relative">
                     <input
                         type="search"
+                        id="default-search"
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
-                        placeholder="search for a recipe..."
-                        className="block w-full px-2 py-3 ps-10 text-lg shadow-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search for a recipe..."
+                        className="block w-full p-3 pl-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required
                     />
                     <button
                         type="submit"
-                        className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="text-white absolute right-2.5 bottom-2.5 bg-cyan-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                         Search
                     </button>
                 </div>
             </form>
 
-            <div className="relative mt-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center my-4">
                 <select
                     name="servings"
                     id="servings"
-                    onChange={(e) => handleServingChange(e.target.value)}
-                    className="block w-full border px-3 py-3 text-sm text-gray-700 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:text-gray-200 dark:bg-gray-700 dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
+                    onChange={handleServingChange}
+                    className="border px-5 py-3 mb-5 rounded-lg font-medium bg-gray-700 text-white outline-none"
                 >
                     <option value="">All Servings</option>
                     {serveArray.map((serving, index) => (
-                        <option key={index} value={serving}>
-                            {serving}
-                        </option>
+                        <option key={index} value={serving}>{serving}</option>
                     ))}
                 </select>
+            </div>
 
-                <div className="grid grid-cols-1 gap-4">
-                    {tempDataList.map((recipe, index) => (
-                        <div
-                            key={index}
-                            className="overflow-hidden bg-white shadow-sm rounded-lg border border-gray-200 dark:bg-blue-600 dark:border-gray-700"
-                        >
-                            <div className="p-6">
-                                <h3 className="text-lg font-medium text-gray-900 dark:text-white">Title : {recipe.title}</h3>
-                                <p className="mt-2 text-lg text-white dark:text-white"><span className='text-lg font-medium'>Servings : </span> {recipe.servings}</p>
-                                <p className="mt-2 text-lg text-white dark:text-white"><span className='text-lg font-medium'>Ingredients : </span> {recipe.ingredients}</p>
-                                {/* <p className="mt-2 text-sm text-white dark:text-white">Instructions : {recipe.instructions}</p> */}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 p-10 rounded-xl bg-white dark:bg-gray-800">
+                {tempDataList.map((recipe, index) => (
+                    <div
+                        key={index}
+                        className="max-w-full my-5 py-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-600"
+                    >
+                        <ul className="px-8">
+                            <li>
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white">
+                                    Title: {recipe.title}
+                                </h5>
+                                <p className="mb-3 text-lg font-medium text-gray-700 dark:text-white">
+                                    Servings: {recipe.servings}
+                                </p>
+                                <p className="mb-3 font-medium text-gray-700 dark:text-white">
+                                    Ingredients: {recipe.ingredients}
+                                </p>
+                                {/* <p className="mb-3 font-normal text-gray-700 dark:text-white">
+                                    Instructions: {recipe.instructions}
+                                </p> */}
+                            </li>
+                        </ul>
+                    </div>
+                ))}
             </div>
         </>
     );
