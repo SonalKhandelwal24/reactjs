@@ -94,7 +94,7 @@ function Home() {
                     {tempDataList.map((recipe, index) => (
                         <div
                             key={index}
-                            className="overflow-hidden bg-white shadow-sm rounded-lg border border-gray-200 dark:bg-orange-700 dark:border-gray-700"
+                            className="overflow-hidden bg-white shadow-sm rounded-lg border border-gray-200 dark:bg-blue-600 dark:border-gray-700"
                         >
                             <div className="p-6">
                                 <h3 className="text-lg font-medium text-gray-900 dark:text-white">Title : {recipe.title}</h3>
