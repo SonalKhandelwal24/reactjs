@@ -65,7 +65,6 @@ const App = () => {
       const response = await fetch(URL);
       const data = await response.json();
       console.log(data);
-
      
       //  Update weatherData state with the new weather data for the city
       setWeatherData(prevWeatherData => (
